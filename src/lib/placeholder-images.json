@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "sow-logo",
+      "description": "Purchase Services Manager App Logo",
+      "imageUrl": "https://images.unsplash.com/photo-1662467150540-e2bba9eecf05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsb2dvJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzcwODQxODkyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo abstract"
+    }
+  ]
+}
