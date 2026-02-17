@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { v4 as uuidv4 } from 'uuid';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { CalendarIcon, FileUp, Loader2, Plus, Trash2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 
@@ -67,6 +67,8 @@ const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 export function SowDetailsTab({ sow, onSave, isExtracting, setIsExtracting }: SowDetailsTabProps) {
   const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [startDateOpen, setStartDateOpen] = useState(false);
+  const [endDateOpen, setEndDateOpen] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -297,7 +299,7 @@ export function SowDetailsTab({ sow, onSave, isExtracting, setIsExtracting }: So
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>SOW Start Date</FormLabel>
-                  <Popover modal>
+                  <Popover modal open={startDateOpen} onOpenChange={setStartDateOpen}>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
@@ -320,7 +322,10 @@ export function SowDetailsTab({ sow, onSave, isExtracting, setIsExtracting }: So
                       <Calendar
                         mode="single"
                         selected={field.value}
-                        onSelect={field.onChange}
+                        onSelect={(date) => {
+                          field.onChange(date);
+                          setStartDateOpen(false);
+                        }}
                         initialFocus
                       />
                     </PopoverContent>
@@ -335,7 +340,7 @@ export function SowDetailsTab({ sow, onSave, isExtracting, setIsExtracting }: So
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>SOW End Date</FormLabel>
-                  <Popover modal>
+                  <Popover modal open={endDateOpen} onOpenChange={setEndDateOpen}>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
@@ -358,7 +363,10 @@ export function SowDetailsTab({ sow, onSave, isExtracting, setIsExtracting }: So
                       <Calendar
                         mode="single"
                         selected={field.value}
-                        onSelect={field.onChange}
+                        onSelect={(date) => {
+                          field.onChange(date);
+                          setEndDateOpen(false);
+                        }}
                         initialFocus
                       />
                     </PopoverContent>
