@@ -297,7 +297,7 @@ export function SowDetailsTab({ sow, onSave, isExtracting, setIsExtracting }: So
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>SOW Start Date</FormLabel>
-                  <Popover>
+                  <Popover modal>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
@@ -335,7 +335,7 @@ export function SowDetailsTab({ sow, onSave, isExtracting, setIsExtracting }: So
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>SOW End Date</FormLabel>
-                  <Popover>
+                  <Popover modal>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
