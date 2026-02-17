@@ -86,3 +86,16 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Calendar alignment fix */
+.rdp-custom table {
+  width: 252px;
+  table-layout: fixed;
+}
+.rdp-custom th,
+.rdp-custom td {
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  padding: 0;
+}
